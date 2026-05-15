@@ -410,10 +410,11 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: var(--text-3xl); }
-  h2 { font-size: var(--text-2xl); }
-  h3 { font-size: var(--text-lg); }
-  .container { padding: 0 var(--space-4); }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  .container { padding: 0 var(--space-5); }
   .section { padding: var(--space-12) 0; }
   .section-alt { padding: var(--space-12) 0; }
   .btn-lg {
@@ -423,9 +424,11 @@ ul, ol {
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: var(--text-2xl); }
-  h2 { font-size: var(--text-xl); }
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.375rem; }
   :root {
-    --nav-height: 64px;
+    --nav-height: 72px;
   }
+  .container { padding: 0 var(--space-4); }
 }

@@ -266,23 +266,51 @@
 
 @media (max-width: 768px) {
   .heroContent {
-    padding: calc(var(--nav-height) + var(--space-12)) var(--space-6) var(--space-16);
+    padding: calc(var(--nav-height) + var(--space-8)) var(--space-4) var(--space-12);
   }
-  .heroDesc {
+
+  .heroBadge {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .heroTitle {
+    font-size: 2.8rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .heroSubtitle {
     font-size: var(--text-lg);
+    margin-bottom: var(--space-6);
   }
+
+  .heroDesc {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-8);
+    line-height: 1.5;
+  }
+
   .heroButtons {
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
+
   .heroPrimary, .heroSecondary {
     width: 100%;
-    max-width: 320px;
+    max-width: 280px;
+    padding: var(--space-3) var(--space-8);
+    font-size: var(--text-sm);
     justify-content: center;
   }
-  .shape1, .shape2, .shape3 {
-    filter: blur(40px);
-    opacity: 0.3;
+
+  .shape1 { width: 200px; height: 200px; left: -10%; top: 5%; }
+  .shape2 { width: 250px; height: 250px; right: -10%; bottom: 5%; }
+  .shape3 { display: none; }
+
+  .scrollIndicator {
+    display: none;
   }
 }
+
 

@@ -230,23 +230,33 @@
 
   .hamburger {
     display: flex;
+    padding: var(--space-3);
+    margin-right: calc(-1 * var(--space-2));
   }
 
   .mobileMenu {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    padding: calc(var(--nav-height) + var(--space-10)) var(--space-8) var(--space-8);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: var(--space-12) var(--space-8);
     z-index: 999;
     opacity: 0;
     pointer-events: none;
-    transition: all var(--duration-normal) var(--ease-out);
+    transition: all 0.5s var(--ease-out);
     transform: translateY(-20px);
+  }
+
+  .navScrolled .mobileMenu {
+    background: rgba(255, 255, 255, 0.98);
   }
 
   .mobileMenuOpen {
@@ -257,30 +267,54 @@
 
   .mobileLink {
     font-family: var(--font-heading);
-    font-size: var(--text-2xl);
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--text-dark);
     padding: var(--space-4) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all var(--duration-fast) var(--ease-out);
+    transition: all var(--duration-normal) var(--ease-out);
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
   }
 
+  .mobileMenuOpen .mobileLink {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger animation for links */
+  .mobileMenuOpen .mobileLink:nth-child(1) { transition-delay: 0.1s; }
+  .mobileMenuOpen .mobileLink:nth-child(2) { transition-delay: 0.15s; }
+  .mobileMenuOpen .mobileLink:nth-child(3) { transition-delay: 0.2s; }
+  .mobileMenuOpen .mobileLink:nth-child(4) { transition-delay: 0.25s; }
+  .mobileMenuOpen .mobileLink:nth-child(5) { transition-delay: 0.3s; }
+
   .mobileLink:hover {
-    color: var(--accent);
-    padding-left: var(--space-4);
+    color: var(--primary);
+    transform: scale(1.1);
   }
 
   .mobileCta {
-    margin-top: var(--space-8);
-    align-self: flex-start;
-    padding: var(--space-4) var(--space-10);
+    margin-top: var(--space-10);
+    padding: var(--space-4) var(--space-12);
     background: linear-gradient(135deg, var(--accent), var(--accent-dark));
     color: white;
     border-radius: var(--radius-full);
     font-family: var(--font-heading);
-    font-size: var(--text-lg);
-    font-weight: 700;
+    font-size: var(--text-xl);
+    font-weight: 800;
     text-align: center;
     box-shadow: var(--shadow-accent);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--duration-normal) var(--ease-out);
+    transition-delay: 0.4s;
+  }
+
+  .mobileMenuOpen .mobileCta {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
