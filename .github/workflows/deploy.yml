@@ -6,37 +6,40 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Execute Deployment Commands via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            # Create project directory if it doesn't exist
-            mkdir -p /var/www/little-angle-school
-            cd /var/www/little-angle-school
-            
-            # Check if directory is empty or not a git repo
-            if [ ! -d ".git" ]; then
-              echo "Cloning repository..."
-              git clone https://github.com/savangajera7/little-angle-school.git .
-            else
-              echo "Pulling latest changes..."
-              # Reset any local changes and pull latest
-              git reset --hard
-              git pull origin main
-            fi
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            # Install dependencies and build static export
-            echo "Installing dependencies..."
-            npm install
-            
-            echo "Building static Next.js export..."
-            npm run build
-            
-            echo "Deployment completed. Nginx is serving the /out directory directly."
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Static Site
+        run: npm run build
+
+      - name: Deploy to Server via Rsync
+        run: |
+          # Set up the SSH agent and add the private key
+          eval $(ssh-agent -s)
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
+          
+          # Create the .ssh directory and add the server to known_hosts to prevent verification prompts
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+          
+          # Ensure the destination directory exists on the server
+          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "mkdir -p /var/www/little-angle-school/out"
+          
+          # Sync the 'out' folder to the server
+          # -a: archive mode, -v: verbose, -z: compress, --delete: remove files on server that aren't in local out/
+          rsync -avz --delete out/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/var/www/little-angle-school/out/
+
