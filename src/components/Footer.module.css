@@ -1,0 +1,246 @@
+.footer {
+  background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-darker) 100%);
+  color: white;
+  padding: var(--space-16) 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: var(--background);
+  border-radius: 0 0 50% 50%;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: var(--space-12);
+  padding: var(--space-8) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.footerAbout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footerLogo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.footerLogoImg {
+  border-radius: var(--radius-full);
+}
+
+.footerLogoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerSchoolName {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: white;
+}
+
+.footerSchoolNameGuj {
+  font-family: var(--font-gujarati);
+  font-size: var(--text-sm);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.footerDesc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+  line-height: 1.8;
+}
+
+.trustBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: fit-content;
+}
+
+.footerColumn h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: white;
+  margin-bottom: var(--space-6);
+  position: relative;
+  padding-bottom: var(--space-3);
+}
+
+.footerColumn h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footerLink {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+  transition: all var(--duration-fast) var(--ease-out);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footerLink:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.footerLink span {
+  font-size: var(--text-base);
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-4);
+}
+
+.contactIcon {
+  font-size: var(--text-xl);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contactText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contactText a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--duration-fast);
+}
+
+.contactText a:hover {
+  color: var(--accent);
+}
+
+.mapContainer {
+  width: 100%;
+  height: 180px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: var(--space-4);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.mapContainer iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-6) 0;
+  margin-top: var(--space-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.copyright {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: white;
+  font-size: var(--text-xl);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  border: none;
+  box-shadow: var(--shadow-accent);
+}
+
+.backToTop:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(245, 146, 30, 0.5);
+}
+
+/* Decorative */
+.footerDecor {
+  position: absolute;
+  top: 40%;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-full);
+  background: rgba(245, 146, 30, 0.05);
+  pointer-events: none;
+}
+
+.footerDecor2 {
+  position: absolute;
+  bottom: 20%;
+  left: -80px;
+  width: 250px;
+  height: 250px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+@media (max-width: 600px) {
+  .footerBottom {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+}

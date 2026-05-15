@@ -1,0 +1,81 @@
+.heading {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-3);
+  background: var(--accent-light);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-full);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: var(--space-4);
+  line-height: 1.15;
+}
+
+.titleHighlight {
+  color: var(--primary);
+  position: relative;
+}
+
+.subtitle {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.decorLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.decorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+}
+
+.decorDash {
+  width: 50px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.headingLeft {
+  text-align: left;
+}
+
+.headingLeft .subtitle {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--text-3xl);
+  }
+  .subtitle {
+    font-size: var(--text-base);
+  }
+}

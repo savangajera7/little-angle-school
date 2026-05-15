@@ -1,0 +1,116 @@
+.slider {
+  padding: var(--space-20) 0;
+  background: var(--primary-50);
+  overflow: hidden;
+}
+
+.track {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  min-height: 260px;
+}
+
+.testimonial {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--space-6);
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all var(--duration-slow) var(--ease-out);
+  pointer-events: none;
+}
+
+.testimonialActive {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
+.quoteIcon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+}
+
+.quoteText {
+  font-size: var(--text-lg);
+  color: var(--text-body);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: var(--space-6);
+  max-width: 600px;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.authorAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  margin-bottom: var(--space-2);
+}
+
+.authorName {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.authorRole {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  padding: 0;
+}
+
+.dotActive {
+  background: var(--primary);
+  width: 30px;
+  border-radius: var(--radius-full);
+}
+
+@media (max-width: 768px) {
+  .quoteText {
+    font-size: var(--text-base);
+  }
+  .track {
+    min-height: 300px;
+  }
+}

@@ -1,0 +1,71 @@
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  transition: all var(--duration-normal) var(--ease-out);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: scaleX(0);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: transparent;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.iconWrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-5);
+  font-size: 2rem;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.iconBlue {
+  background: var(--primary-light);
+}
+
+.iconOrange {
+  background: var(--accent-light);
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: var(--space-3);
+}
+
+.cardDesc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
