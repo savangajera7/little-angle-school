@@ -12,23 +12,23 @@
   --primary: #1B5FAD;
   --primary-dark: #134A8C;
   --primary-darker: #0D3666;
-  --primary-light: #E8F0FE;
-  --primary-50: #F0F6FF;
+  --primary-light: #EBF1FA;
+  --primary-50: #F4F8FC;
 
   /* Accent - Warm Orange from logo */
   --accent: #F5921E;
   --accent-dark: #E07D0A;
-  --accent-light: #FFF3E0;
-  --accent-50: #FFF8F0;
+  --accent-light: #FFF6EA;
+  --accent-50: #FFF9F2;
 
   /* Neutrals */
-  --text-dark: #1A1A2E;
-  --text-body: #2D3748;
-  --text-muted: #5A6380;
-  --text-light: #8896AB;
+  --text-dark: #0A192F;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
   --surface: #FFFFFF;
   --surface-elevated: #FFFFFF;
-  --background: #F8FAFF;
+  --background: #FAFBFF;
   --border: #E2E8F0;
   --border-light: #F1F5F9;
 
@@ -36,12 +36,12 @@
   --success: #10B981;
   --success-light: #D1FAE5;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(27, 95, 173, 0.06);
-  --shadow-md: 0 4px 12px rgba(27, 95, 173, 0.08);
-  --shadow-lg: 0 8px 30px rgba(27, 95, 173, 0.12);
-  --shadow-xl: 0 20px 60px rgba(27, 95, 173, 0.15);
-  --shadow-accent: 0 4px 20px rgba(245, 146, 30, 0.3);
+  /* Premium Shadows - Soft and diffused */
+  --shadow-sm: 0 2px 8px rgba(13, 54, 102, 0.04);
+  --shadow-md: 0 8px 24px rgba(13, 54, 102, 0.06);
+  --shadow-lg: 0 12px 32px rgba(13, 54, 102, 0.08);
+  --shadow-xl: 0 24px 48px rgba(13, 54, 102, 0.12);
+  --shadow-accent: 0 8px 24px rgba(245, 146, 30, 0.25);
 
   /* Typography Scale */
   --font-heading: 'Outfit', sans-serif;
@@ -74,12 +74,12 @@
   --space-20: 5rem;
   --space-24: 6rem;
 
-  /* Border Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-2xl: 32px;
+  /* Border Radius - Larger for softer look */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-2xl: 48px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -91,7 +91,7 @@
 
   /* Layout */
   --max-width: 1200px;
-  --nav-height: 80px;
+  --nav-height: 84px;
 }
 
 /* --- CSS Reset & Base --- */

@@ -27,9 +27,6 @@ export default function Hero() {
       <div className={`${styles.floatingShape} ${styles.shape1}`} />
       <div className={`${styles.floatingShape} ${styles.shape2}`} />
       <div className={`${styles.floatingShape} ${styles.shape3}`} />
-      <div className={`${styles.floatingShape} ${styles.shape4}`} />
-      <div className={`${styles.floatingShape} ${styles.shape5}`}>📚</div>
-      <div className={`${styles.floatingShape} ${styles.shape6}`}>✏️</div>
 
       {/* Content */}
       <div className={styles.heroContent}>

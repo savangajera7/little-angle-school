@@ -86,26 +86,46 @@
 }
 
 .navLinkDefault {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .navLinkDefault:hover {
   color: white;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .navLinkScrolled {
-  color: var(--text-dark);
+  color: var(--text-body);
 }
 
 .navLinkScrolled:hover {
   color: var(--primary);
-  background: var(--primary-light);
+  background: var(--primary-50);
 }
 
 .navLinkActive {
-  color: var(--accent) !important;
-  background: rgba(245, 146, 30, 0.1) !important;
+  font-weight: 700;
+}
+
+.navLinkDefault.navLinkActive {
+  color: white;
+}
+
+.navLinkScrolled.navLinkActive {
+  color: var(--primary);
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
 }
 
 .ctaButton {

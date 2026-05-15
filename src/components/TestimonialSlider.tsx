@@ -63,12 +63,19 @@ export default function TestimonialSlider() {
                 i === active ? styles.testimonialActive : ""
               }`}
             >
-              <span className={styles.quoteIcon}>&ldquo;</span>
-              <p className={styles.quoteText}>{t.quote}</p>
-              <div className={styles.author}>
-                <div className={styles.authorAvatar}>{t.initials}</div>
-                <span className={styles.authorName}>{t.name}</span>
-                <span className={styles.authorRole}>{t.role}</span>
+              <div className={styles.card}>
+                <span className={styles.quoteIcon}>&ldquo;</span>
+                <div className={styles.content}>
+                  <div className={styles.stars}>
+                    <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                  </div>
+                  <p className={styles.quoteText}>{t.quote}</p>
+                  <div className={styles.author}>
+                    <div className={styles.authorAvatar}>{t.initials}</div>
+                    <span className={styles.authorName}>{t.name}</span>
+                    <span className={styles.authorRole}>{t.role}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

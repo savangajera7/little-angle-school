@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Little Angel's English School" }],
   creator: "Little Angel's English School",
   publisher: "Naagneshwari Education Trust",
-  metadataBase: new URL("https://littleangelsschool.in"),
+  metadataBase: new URL("https://little-angle.mahispark.com"),
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://littleangelsschool.in",
+    url: "https://little-angle.mahispark.com",
     siteName: "Little Angel's English School",
     title: "Little Angel's English School | Best School in Singarva, Ahmedabad",
     description:
@@ -72,9 +72,9 @@ const jsonLd = {
   "@type": "EducationalOrganization",
   name: "Little Angel's English School",
   alternateName: "સાંઈ વિદ્યા મંદિર",
-  url: "https://littleangelsschool.in",
-  logo: "https://littleangelsschool.in/images/logo.png",
-  image: "https://littleangelsschool.in/images/school-building.jpeg",
+  url: "https://little-angle.mahispark.com",
+  logo: "https://little-angle.mahispark.com/images/logo.png",
+  image: "https://little-angle.mahispark.com/images/school-building.jpeg",
   description:
     "Little Angel's English School offers quality education from Jr. KG to 5th Standard in Singarva, Ahmedabad.",
   address: {

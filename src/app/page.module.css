@@ -1,11 +1,11 @@
 .programs {
-  padding: var(--space-20) 0;
+  padding: var(--space-24) 0;
 }
 
 .programsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .programCard {
@@ -16,43 +16,67 @@
   border: 1px solid var(--border-light);
   transition: all var(--duration-normal) var(--ease-out);
   text-align: center;
-}
-
-.programCard:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-}
-
-.programIcon {
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
   position: relative;
 }
 
+.programCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: scaleX(0);
+  transition: transform var(--duration-normal) var(--ease-out);
+  transform-origin: center;
+}
+
+.programCard:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-xl);
+  border-color: transparent;
+}
+
+.programCard:hover::after {
+  transform: scaleX(1);
+}
+
+.programIcon {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.programCard:hover .programIcon {
+  transform: scale(1.05);
+}
+
 .programIconBg1 {
-  background: linear-gradient(135deg, #E8F0FE, #D0E2FF);
+  background: linear-gradient(135deg, rgba(235, 241, 250, 0.8), rgba(208, 226, 255, 0.8));
 }
 .programIconBg2 {
-  background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+  background: linear-gradient(135deg, rgba(255, 246, 234, 0.8), rgba(255, 224, 178, 0.8));
 }
 .programIconBg3 {
-  background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+  background: linear-gradient(135deg, rgba(209, 250, 229, 0.8), rgba(167, 243, 208, 0.8));
 }
 .programIconBg4 {
-  background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+  background: linear-gradient(135deg, rgba(237, 233, 254, 0.8), rgba(221, 214, 254, 0.8));
 }
 
 .programBody {
-  padding: var(--space-6);
+  padding: var(--space-8);
 }
 
 .programTitle {
   font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: 800;
   color: var(--text-dark);
   margin-bottom: var(--space-2);
 }
@@ -60,40 +84,42 @@
 .programAge {
   font-size: var(--text-sm);
   color: var(--accent);
-  font-weight: 600;
-  margin-bottom: var(--space-3);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .programDesc {
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .features {
-  padding: var(--space-20) 0;
-  background: var(--primary-50);
+  padding: var(--space-24) 0;
+  background: linear-gradient(180deg, var(--background) 0%, var(--primary-50) 100%);
 }
 
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .campus {
-  padding: var(--space-20) 0;
+  padding: var(--space-24) 0;
 }
 
 .campusGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
+  gap: var(--space-16);
   align-items: center;
 }
 
 .campusImage {
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-2xl);
   overflow: hidden;
   box-shadow: var(--shadow-xl);
   position: relative;
@@ -101,21 +127,24 @@
 
 .campusBadge {
   position: absolute;
-  bottom: var(--space-4);
-  left: var(--space-4);
-  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-  color: white;
-  padding: var(--space-2) var(--space-5);
+  bottom: var(--space-6);
+  left: var(--space-6);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary);
+  padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
   font-size: var(--text-sm);
-  font-weight: 700;
-  box-shadow: var(--shadow-accent);
+  font-weight: 800;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .campusContent h2 {
-  font-size: var(--text-4xl);
+  font-size: var(--text-5xl);
   margin-bottom: var(--space-6);
+  line-height: 1.1;
 }
 
 .campusHighlight {
@@ -123,37 +152,39 @@
 }
 
 .campusDesc {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   color: var(--text-muted);
   margin-bottom: var(--space-8);
   line-height: 1.8;
+  font-weight: 300;
 }
 
 .campusFeatures {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .campusFeature {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  font-size: var(--text-base);
+  gap: var(--space-4);
+  font-size: var(--text-lg);
   color: var(--text-body);
   font-weight: 500;
 }
 
 .campusFeature span {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--success-light);
   border-radius: var(--radius-full);
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15);
 }
 
 @media (max-width: 1024px) {
@@ -176,6 +207,9 @@
   .campusGrid {
     grid-template-columns: 1fr;
     gap: var(--space-8);
+  }
+  .campusContent h2 {
+    font-size: var(--text-4xl);
   }
 }
 

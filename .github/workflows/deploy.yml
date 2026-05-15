@@ -1,0 +1,51 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Execute Deployment Commands via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Create project directory if it doesn't exist
+            mkdir -p /var/www/little-angle-school
+            cd /var/www/little-angle-school
+            
+            # Check if directory is empty or not a git repo
+            if [ ! -d ".git" ]; then
+              echo "Cloning repository..."
+              git clone https://github.com/savangajera7/little-angle-school.git .
+            else
+              echo "Pulling latest changes..."
+              # Reset any local changes and pull latest
+              git reset --hard
+              git pull origin main
+            fi
+
+            # Install dependencies and build
+            echo "Installing dependencies..."
+            npm install
+            
+            echo "Building Next.js app..."
+            npm run build
+
+            # Check if PM2 process is already running
+            pm2 describe little-angle-school > /dev/null
+            if [ $? -eq 0 ]; then
+              echo "Restarting PM2 process..."
+              pm2 restart little-angle-school
+            else
+              echo "Starting PM2 process for the first time..."
+              pm2 start npm --name "little-angle-school" -- start
+              pm2 save
+            fi
