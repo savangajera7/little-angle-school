@@ -27,9 +27,9 @@ jobs:
 
       - name: Deploy to Server via Rsync
         run: |
-          # Set up the SSH agent and add the private key
+          # Set up the SSH agent and add the private key (decoding from Base64)
           eval $(ssh-agent -s)
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' | ssh-add -
+          echo "${{ secrets.SSH_PRIVATE_KEY_BASE64 }}" | base64 -d | tr -d '\r' | ssh-add -
           
           # Create the .ssh directory and add the server to known_hosts to prevent verification prompts
           mkdir -p ~/.ssh
@@ -40,6 +40,5 @@ jobs:
           ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "mkdir -p /var/www/little-angle-school/out"
           
           # Sync the 'out' folder to the server
-          # -a: archive mode, -v: verbose, -z: compress, --delete: remove files on server that aren't in local out/
           rsync -avz --delete out/ ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/var/www/little-angle-school/out/
 
