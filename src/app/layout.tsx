@@ -1,12 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import AdmissionModal from "@/components/AdmissionModal";
 
-export const metadata: Metadata = {
+export const viewport: Viewport = {
   colorScheme: "light",
+};
+
+export const metadata: Metadata = {
   title: {
     default: "Little Angel's English School | Best School in Singarva, Ahmedabad",
     template: "%s | Little Angel's English School",

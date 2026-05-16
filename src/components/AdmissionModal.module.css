@@ -216,8 +216,8 @@
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  background: #ffffff;
-  color-scheme: light;
+  background: #ffffff !important;
+  color-scheme: light !important;
   font-size: var(--text-base);
   transition: all 0.2s;
   width: 100%;

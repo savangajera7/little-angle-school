@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./AdmissionModal.module.css";
@@ -37,14 +36,22 @@ export default function AdmissionModal() {
   }, [isOpen]);
 
   useEffect(() => {
-    const hasSeenPopup = localStorage.getItem("hasSeenAdmissionPopup");
+    // const hasSeenPopup = localStorage.getItem("hasSeenAdmissionPopup");
+    // Temporarily disabled localStorage check for testing purposes
+    const hasSeenPopup = false; 
+    
+    let timer: NodeJS.Timeout;
     if (!hasSeenPopup) {
-      const timer = setTimeout(() => setIsOpen(true), 5000);
-      return () => clearTimeout(timer);
+      timer = setTimeout(() => setIsOpen(true), 2000); // Pops up after 2 seconds for easy testing
     }
+
     const handleManualOpen = () => setIsOpen(true);
     window.addEventListener("openAdmissionModal", handleManualOpen);
-    return () => window.removeEventListener("openAdmissionModal", handleManualOpen);
+    
+    return () => {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener("openAdmissionModal", handleManualOpen);
+    };
   }, []);
 
   const handleClose = () => {
@@ -150,17 +157,17 @@ export default function AdmissionModal() {
                             <label>Student Full Name *</label>
                             <input type="text" name="studentName" required value={formData.studentName} onChange={handleChange} placeholder="First Last" />
                           </div>
-                            <div className={styles.inputGroup}>
-                              <label>Date of Birth *</label>
-                              <input 
-                                type="text" 
-                                name="dob" 
-                                required 
-                                value={formData.dob} 
-                                onChange={handleChange} 
-                                placeholder="DD/MM/YYYY"
-                              />
-                            </div>
+                          <div className={styles.inputGroup}>
+                            <label>Date of Birth *</label>
+                            <input 
+                              type="date" 
+                              name="dob" 
+                              required 
+                              value={formData.dob} 
+                              onChange={handleChange} 
+                              lang="en-GB"
+                            />
+                          </div>
                           <div className={styles.inputGroup}>
                             <label>Gender *</label>
                             <select name="gender" required value={formData.gender} onChange={handleChange}>
