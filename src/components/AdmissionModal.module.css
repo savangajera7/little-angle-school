@@ -216,11 +216,12 @@
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  background: #fdfdfd;
+  background: #ffffff;
+  color-scheme: light;
   font-size: var(--text-base);
   transition: all 0.2s;
   width: 100%;
-  color: var(--text-dark);
+  color: var(--primary-darker);
 }
 
 .inputGroup input:focus,

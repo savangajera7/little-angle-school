@@ -152,7 +152,7 @@ export default function AdmissionModal() {
                           </div>
                           <div className={styles.inputGroup}>
                             <label>Date of Birth *</label>
-                            <input type="date" name="dob" required value={formData.dob} onChange={handleChange} />
+                            <input type="date" name="dob" required value={formData.dob} onChange={handleChange} lang="en-GB" />
                           </div>
                           <div className={styles.inputGroup}>
                             <label>Gender *</label>
