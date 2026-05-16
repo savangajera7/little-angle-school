@@ -93,12 +93,12 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/contact"
+            <button
+              onClick={() => window.dispatchEvent(new Event("openAdmissionModal"))}
               className={`${styles.navLink} ${styles.ctaButton}`}
             >
               Apply Now ✨
-            </Link>
+            </button>
           </div>
 
           {/* Hamburger */}
@@ -146,13 +146,15 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
+          <button
+            onClick={() => {
+              setMobileOpen(false);
+              window.dispatchEvent(new Event("openAdmissionModal"));
+            }}
             className={styles.mobileCta}
-            onClick={() => setMobileOpen(false)}
           >
             Apply Now ✨
-          </Link>
+          </button>
         </div>
       </nav>
     </>

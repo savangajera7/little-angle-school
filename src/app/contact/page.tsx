@@ -174,8 +174,13 @@ export default function ContactPage() {
                 <div className={styles.formBody}>
                   {/* Replace the URL below with your actual Google Form embed URL */}
                   <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdExample/viewform?embedded=true"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfz8csK6cMfM2W-Vt7kIdCsmTKwWxK616eUYdAeLEpCPDlo7g/viewform?embedded=true"
                     title="Admission Application Form"
+                    width="100%"
+                    height="2800"
+                    frameBorder="0"
+                    marginHeight={0}
+                    marginWidth={0}
                     loading="lazy"
                   >
                     Loading…

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import styles from "./AdmissionBanner.module.css";
@@ -17,9 +19,12 @@ export default function AdmissionBanner() {
               Give your child the gift of quality education. Join our family of
               happy learners at Little Angel&apos;s English School.
             </p>
-            <Link href="/contact" className={styles.bannerBtn}>
+            <button 
+              onClick={() => window.dispatchEvent(new Event("openAdmissionModal"))} 
+              className={styles.bannerBtn}
+            >
               Apply Now →
-            </Link>
+            </button>
             <div className={styles.bannerPhones}>
               <a href="tel:+918866160867" className={styles.phoneLink}>
                 📞 +91 88661 60867

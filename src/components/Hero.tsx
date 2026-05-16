@@ -79,9 +79,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
-          <Link href="/contact" className={styles.heroPrimary}>
+          <button 
+            onClick={() => window.dispatchEvent(new Event("openAdmissionModal"))} 
+            className={styles.heroPrimary}
+          >
             Apply for Admission ✨
-          </Link>
+          </button>
           <Link href="/about" className={styles.heroSecondary}>
             Explore Our School →
           </Link>

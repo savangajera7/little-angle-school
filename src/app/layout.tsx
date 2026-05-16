@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
+import AdmissionModal from "@/components/AdmissionModal";
 
 export const metadata: Metadata = {
   title: {
@@ -114,6 +115,7 @@ export default function RootLayout({
       <body>
         <SmoothScroll>
           <Navbar />
+          <AdmissionModal />
           <main>{children}</main>
           <Footer />
         </SmoothScroll>
