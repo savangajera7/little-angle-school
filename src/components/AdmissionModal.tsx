@@ -150,10 +150,17 @@ export default function AdmissionModal() {
                             <label>Student Full Name *</label>
                             <input type="text" name="studentName" required value={formData.studentName} onChange={handleChange} placeholder="First Last" />
                           </div>
-                          <div className={styles.inputGroup}>
-                            <label>Date of Birth *</label>
-                            <input type="date" name="dob" required value={formData.dob} onChange={handleChange} lang="en-GB" />
-                          </div>
+                            <div className={styles.inputGroup}>
+                              <label>Date of Birth *</label>
+                              <input 
+                                type="text" 
+                                name="dob" 
+                                required 
+                                value={formData.dob} 
+                                onChange={handleChange} 
+                                placeholder="DD/MM/YYYY"
+                              />
+                            </div>
                           <div className={styles.inputGroup}>
                             <label>Gender *</label>
                             <select name="gender" required value={formData.gender} onChange={handleChange}>

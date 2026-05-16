@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import AdmissionModal from "@/components/AdmissionModal";
 
 export const metadata: Metadata = {
+  colorScheme: "light",
   title: {
     default: "Little Angel's English School | Best School in Singarva, Ahmedabad",
     template: "%s | Little Angel's English School",
@@ -60,6 +61,7 @@ export const metadata: Metadata = {
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
+      "max-snippet": -1,
       "max-snippet": -1,
     },
   },
