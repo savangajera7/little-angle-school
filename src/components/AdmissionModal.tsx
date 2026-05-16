@@ -26,7 +26,7 @@ export default function AdmissionModal() {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQyr2ddZQKgD8s_udVKzBJ633Gkw6uIPM7RfEU60CBDNNhOeusCEj8gd4tFvxol_4A3Q/exec";
 
-  // Body Scroll Lock
+  // Body Scroll Lock (Fallback)
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -50,7 +50,10 @@ export default function AdmissionModal() {
   const handleClose = () => {
     setIsOpen(false);
     localStorage.setItem("hasSeenAdmissionPopup", "true");
-    setTimeout(() => setCurrentStep(1), 500); // Reset after animation
+    setTimeout(() => {
+      setCurrentStep(1);
+      setIsSuccess(false);
+    }, 500); // Reset after animation
   };
 
   const nextStep = () => setCurrentStep(prev => prev + 1);
@@ -72,7 +75,7 @@ export default function AdmissionModal() {
         body: JSON.stringify(formData),
       });
       setIsSuccess(true);
-      setTimeout(() => handleClose(), 4000);
+      setTimeout(() => handleClose(), 5000);
     } catch (error) {
       alert("Something went wrong. Please try again.");
     } finally {
@@ -84,7 +87,11 @@ export default function AdmissionModal() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const progress = (currentStep / 3) * 100;
+  const steps = [
+    { num: 1, label: "Student" },
+    { num: 2, label: "Parent" },
+    { num: 3, label: "Review" },
+  ];
 
   return (
     <AnimatePresence>
@@ -92,148 +99,164 @@ export default function AdmissionModal() {
         <motion.div className={styles.overlay} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <motion.div 
             className={styles.modal} 
-            initial={{ scale: 0.9, opacity: 0, y: 30 }} 
+            initial={{ scale: 0.95, opacity: 0, y: 20 }} 
             animate={{ scale: 1, opacity: 1, y: 0 }} 
-            exit={{ scale: 0.9, opacity: 0, y: 30 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            <div className={styles.modalInner}>
-              <button className={styles.closeBtn} onClick={handleClose}>✕</button>
+            <button className={styles.closeBtn} onClick={handleClose} aria-label="Close">✕</button>
 
-              <div className={styles.progressContainer}>
-                <div className={styles.stepIndicator}>
-                  <span className={`${styles.stepLabel} ${currentStep >= 1 ? styles.stepLabelActive : ""}`}>Student</span>
-                  <span className={`${styles.stepLabel} ${currentStep >= 2 ? styles.stepLabelActive : ""}`}>Parent</span>
-                  <span className={`${styles.stepLabel} ${currentStep >= 3 ? styles.stepLabelActive : ""}`}>Review</span>
+            {!isSuccess && (
+              <div className={styles.headerArea}>
+                <div className={styles.headerTitle}>
+                  <h2>Admission Inquiry</h2>
+                  <p>Join Little Angel&apos;s English School (2026-27)</p>
                 </div>
-                <div className={styles.progressBar}>
-                  <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>
+                
+                <div className={styles.stepper}>
+                  <div className={styles.stepperLine}>
+                    <div 
+                      className={styles.stepperLineFill} 
+                      style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
+                    ></div>
+                  </div>
+                  {steps.map((step) => (
+                    <div 
+                      key={step.num} 
+                      className={`${styles.stepItem} ${currentStep === step.num ? styles.stepItemActive : ""} ${currentStep > step.num ? styles.stepItemCompleted : ""}`}
+                    >
+                      <div className={styles.stepCircle}>
+                        {currentStep > step.num ? "✓" : step.num}
+                      </div>
+                      <span className={styles.stepLabel}>{step.label}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
+            )}
 
-              <div className={styles.content}>
-                {!isSuccess ? (
-                  <form className={styles.form} onSubmit={handleSubmit}>
-                    <AnimatePresence mode="wait">
-                      {currentStep === 1 && (
-                        <motion.div key="step1" className={styles.formStep} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }}>
-                          <div className={styles.header}>
-                            <h2>Student Info</h2>
-                            <p>Step 1 of 3 — Basic Details</p>
-                          </div>
-                          <div className={styles.grid}>
-                            <div className={styles.inputGroup}>
-                              <label>Student Full Name *</label>
-                              <input type="text" name="studentName" required value={formData.studentName} onChange={handleChange} placeholder="First Last" />
-                            </div>
-                            <div className={styles.inputGroup}>
-                              <label>Date of Birth *</label>
-                              <input type="date" name="dob" required value={formData.dob} onChange={handleChange} />
-                            </div>
-                            <div className={styles.inputGroup}>
-                              <label>Gender *</label>
-                              <select name="gender" required value={formData.gender} onChange={handleChange}>
-                                <option value="">Select</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                              </select>
-                            </div>
-                            <div className={styles.inputGroup}>
-                              <label>Grade Applied For *</label>
-                              <select name="grade" required value={formData.grade} onChange={handleChange}>
-                                <option value="">Select Grade</option>
-                                <option value="Jr. KG">Jr. KG</option>
-                                <option value="Sr. KG">Sr. KG</option>
-                                <option value="Balvatika">Balvatika</option>
-                                {[1, 2, 3, 4, 5, 6, 7, 8].map(n => <option key={n} value={`Std ${n}`}>Std {n}</option>)}
-                              </select>
-                            </div>
+            <div className={styles.modalInner} data-lenis-prevent="true">
+              {!isSuccess ? (
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <AnimatePresence mode="wait">
+                    {currentStep === 1 && (
+                      <motion.div key="step1" className={styles.formStep} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }}>
+                        <div className={styles.stepHeader}>
+                          <h3>Student Information</h3>
+                          <p>Please provide the child&apos;s details.</p>
+                        </div>
+                        <div className={styles.grid}>
+                          <div className={styles.inputGroup}>
+                            <label>Student Full Name *</label>
+                            <input type="text" name="studentName" required value={formData.studentName} onChange={handleChange} placeholder="First Last" />
                           </div>
                           <div className={styles.inputGroup}>
-                            <label>Previous School Name (If any)</label>
-                            <input type="text" name="previousSchool" value={formData.previousSchool} onChange={handleChange} placeholder="Where did they study before?" />
-                          </div>
-                        </motion.div>
-                      )}
-
-                      {currentStep === 2 && (
-                        <motion.div key="step2" className={styles.formStep} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }}>
-                          <div className={styles.header}>
-                            <h2>Parent Info</h2>
-                            <p>Step 2 of 3 — Contact Details</p>
-                          </div>
-                          <div className={styles.grid}>
-                            <div className={styles.inputGroup}>
-                              <label>Parent Name *</label>
-                              <input type="text" name="parentName" required value={formData.parentName} onChange={handleChange} placeholder="Guardian Name" />
-                            </div>
-                            <div className={styles.inputGroup}>
-                              <label>Mobile Number *</label>
-                              <input type="tel" name="mobileNumber" required pattern="[0-9]{10}" value={formData.mobileNumber} onChange={handleChange} placeholder="10 digits" />
-                            </div>
-                            <div className={styles.inputGroup}>
-                              <label>Alt Number</label>
-                              <input type="tel" name="altMobileNumber" value={formData.altMobileNumber} onChange={handleChange} />
-                            </div>
-                            <div className={styles.inputGroup}>
-                              <label>Email Address</label>
-                              <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="example@mail.com" />
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-
-                      {currentStep === 3 && (
-                        <motion.div key="step3" className={styles.formStep} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }}>
-                          <div className={styles.header}>
-                            <h2>Final Steps</h2>
-                            <p>Step 3 of 3 — Address & Source</p>
+                            <label>Date of Birth *</label>
+                            <input type="date" name="dob" required value={formData.dob} onChange={handleChange} />
                           </div>
                           <div className={styles.inputGroup}>
-                            <label>Residential Address *</label>
-                            <textarea name="address" required rows={3} value={formData.address} onChange={handleChange} placeholder="Complete address..."></textarea>
-                          </div>
-                          <div className={styles.grid}>
-                            <div className={styles.inputGroup}>
-                              <label>How did you hear?</label>
-                              <select name="hearAboutUs" value={formData.hearAboutUs} onChange={handleChange}>
-                                <option value="">Select</option>
-                                <option value="Social Media">Social Media</option>
-                                <option value="Friend/Relative">Friend/Relative</option>
-                                <option value="Banner/Flyer">Banner/Flyer</option>
-                              </select>
-                            </div>
+                            <label>Gender *</label>
+                            <select name="gender" required value={formData.gender} onChange={handleChange}>
+                              <option value="">Select</option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                            </select>
                           </div>
                           <div className={styles.inputGroup}>
-                            <label>Specific Questions?</label>
-                            <input type="text" name="questions" value={formData.questions} onChange={handleChange} placeholder="e.g. Fees, Timings..." />
+                            <label>Grade Applied For *</label>
+                            <select name="grade" required value={formData.grade} onChange={handleChange}>
+                              <option value="">Select Grade</option>
+                              <option value="Jr. KG">Jr. KG</option>
+                              <option value="Sr. KG">Sr. KG</option>
+                              <option value="Balvatika">Balvatika</option>
+                              {[1, 2, 3, 4, 5, 6, 7, 8].map(n => <option key={n} value={`Std ${n}`}>Std {n}</option>)}
+                            </select>
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </form>
-                ) : (
-                  <motion.div className={styles.success} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
-                    <span className={styles.successIcon}>✨</span>
-                    <h2>All Set!</h2>
-                    <p>We have received the inquiry for <strong>{formData.studentName}</strong>. Our staff will call you on <strong>{formData.mobileNumber}</strong> soon.</p>
-                  </motion.div>
-                )}
-              </div>
+                        </div>
+                        <div className={styles.inputGroup}>
+                          <label>Previous School Name (If any)</label>
+                          <input type="text" name="previousSchool" value={formData.previousSchool} onChange={handleChange} placeholder="Where did they study before?" />
+                        </div>
+                      </motion.div>
+                    )}
 
-              {!isSuccess && (
-                <div className={styles.footer}>
-                  {currentStep > 1 && (
-                    <button type="button" onClick={prevStep} className={styles.backBtn}>Back</button>
-                  )}
-                  <button 
-                    type="submit" 
-                    onClick={handleSubmit} 
-                    className={styles.submitBtn} 
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? <span className={styles.loader}></span> : (currentStep === 3 ? "Submit Application" : "Next Step →")}
-                  </button>
-                </div>
+                    {currentStep === 2 && (
+                      <motion.div key="step2" className={styles.formStep} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }}>
+                        <div className={styles.stepHeader}>
+                          <h3>Parent & Contact Info</h3>
+                          <p>How can we reach you?</p>
+                        </div>
+                        <div className={styles.grid}>
+                          <div className={styles.inputGroup}>
+                            <label>Parent Name *</label>
+                            <input type="text" name="parentName" required value={formData.parentName} onChange={handleChange} placeholder="Guardian Name" />
+                          </div>
+                          <div className={styles.inputGroup}>
+                            <label>Mobile Number *</label>
+                            <input type="tel" name="mobileNumber" required pattern="[0-9]{10}" value={formData.mobileNumber} onChange={handleChange} placeholder="10 digits" />
+                          </div>
+                          <div className={styles.inputGroup}>
+                            <label>Alt Number</label>
+                            <input type="tel" name="altMobileNumber" value={formData.altMobileNumber} onChange={handleChange} placeholder="Optional" />
+                          </div>
+                          <div className={styles.inputGroup}>
+                            <label>Email Address</label>
+                            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="example@mail.com" />
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {currentStep === 3 && (
+                      <motion.div key="step3" className={styles.formStep} initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }}>
+                        <div className={styles.stepHeader}>
+                          <h3>Final Details</h3>
+                          <p>Just a few more things to complete the inquiry.</p>
+                        </div>
+                        <div className={styles.inputGroup}>
+                          <label>Residential Address *</label>
+                          <textarea name="address" required rows={3} value={formData.address} onChange={handleChange} placeholder="Complete address..."></textarea>
+                        </div>
+                        <div className={styles.grid}>
+                          <div className={styles.inputGroup}>
+                            <label>How did you hear about us?</label>
+                            <select name="hearAboutUs" value={formData.hearAboutUs} onChange={handleChange}>
+                              <option value="">Select</option>
+                              <option value="Social Media">Social Media</option>
+                              <option value="Friend/Relative">Friend/Relative</option>
+                              <option value="Banner/Flyer">Banner/Flyer</option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div className={styles.inputGroup}>
+                          <label>Specific Questions?</label>
+                          <input type="text" name="questions" value={formData.questions} onChange={handleChange} placeholder="e.g. Fees, Timings..." />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <div className={styles.footer}>
+                    {currentStep > 1 ? (
+                      <button type="button" onClick={prevStep} className={styles.backBtn}>← Back</button>
+                    ) : <div></div>}
+                    
+                    <button 
+                      type="submit" 
+                      className={styles.submitBtn} 
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? <span className={styles.loader}></span> : (currentStep === 3 ? "Submit Inquiry" : "Next Step →")}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <motion.div className={styles.success} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}>
+                  <span className={styles.successIcon}>🎉</span>
+                  <h2>Inquiry Received!</h2>
+                  <p>Thank you for choosing Little Angel&apos;s English School.<br/>Our team will contact you on <strong>{formData.mobileNumber}</strong> shortly.</p>
+                </motion.div>
               )}
             </div>
           </motion.div>
