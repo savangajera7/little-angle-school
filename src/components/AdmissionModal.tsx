@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import styles from "./AdmissionModal.module.css";
 
 export default function AdmissionModal() {
@@ -159,13 +161,89 @@ export default function AdmissionModal() {
                           </div>
                           <div className={styles.inputGroup}>
                             <label>Date of Birth *</label>
-                            <input 
-                              type="date" 
-                              name="dob" 
-                              required 
-                              value={formData.dob} 
-                              onChange={handleChange} 
-                              lang="en-GB"
+                            <DatePicker
+                              showIcon
+                              icon={
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                              }
+                              selected={formData.dob ? new Date(formData.dob) : null}
+                              onChange={(date: Date | null) => {
+                                if (date) {
+                                  const yyyy = date.getFullYear();
+                                  const mm = String(date.getMonth() + 1).padStart(2, '0');
+                                  const dd = String(date.getDate()).padStart(2, '0');
+                                  handleChange({ target: { name: 'dob', value: `${yyyy}-${mm}-${dd}` } } as any);
+                                } else {
+                                  handleChange({ target: { name: 'dob', value: '' } } as any);
+                                }
+                              }}
+                              dateFormat="dd/MM/yyyy"
+                              placeholderText="dd/mm/yyyy"
+                              className={styles.nativeLikeDatePicker}
+                              popperPlacement="bottom-start"
+                              required
+                              renderCustomHeader={({
+                                date,
+                                changeYear,
+                                changeMonth,
+                                decreaseMonth,
+                                increaseMonth,
+                                prevMonthButtonDisabled,
+                                nextMonthButtonDisabled,
+                              }) => {
+                                const years = Array.from({ length: 15 }, (_, i) => new Date().getFullYear() - i);
+                                const months = [
+                                  "January", "February", "March", "April", "May", "June",
+                                  "July", "August", "September", "October", "November", "December"
+                                ];
+                                return (
+                                  <div className={styles.customDatePickerHeader}>
+                                    <button 
+                                      onClick={decreaseMonth} 
+                                      disabled={prevMonthButtonDisabled} 
+                                      type="button" 
+                                      className={styles.calendarNavBtn}
+                                    >
+                                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                    </button>
+                                    
+                                    <div className={styles.headerDropdowns}>
+                                      <select
+                                        value={date.getMonth()}
+                                        onChange={({ target: { value } }) => changeMonth(Number(value))}
+                                        className={styles.calendarSelect}
+                                      >
+                                        {months.map((option, index) => (
+                                          <option key={option} value={index}>
+                                            {option}
+                                          </option>
+                                        ))}
+                                      </select>
+              
+                                      <select
+                                        value={date.getFullYear()}
+                                        onChange={({ target: { value } }) => changeYear(Number(value))}
+                                        className={styles.calendarSelect}
+                                      >
+                                        {years.map((year) => (
+                                          <option key={year} value={year}>
+                                            {year}
+                                          </option>
+                                        ))}
+                                      </select>
+                                    </div>
+              
+                                    <button 
+                                      onClick={increaseMonth} 
+                                      disabled={nextMonthButtonDisabled} 
+                                      type="button" 
+                                      className={styles.calendarNavBtn}
+                                    >
+                                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    </button>
+                                  </div>
+                                );
+                              }}
                             />
                           </div>
                           <div className={styles.inputGroup}>
