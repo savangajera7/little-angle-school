@@ -92,6 +92,7 @@
   /* Layout */
   --max-width: 1200px;
   --nav-height: 84px;
+  --strip-height: 28px;
 }
 
 /* --- CSS Reset & Base --- */
@@ -424,11 +425,24 @@ ul, ol {
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.875rem; }
-  h3 { font-size: 1.375rem; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.625rem; }
+  h3 { font-size: 1.25rem; }
   :root {
     --nav-height: 72px;
+    --strip-height: 24px;
   }
   .container { padding: 0 var(--space-4); }
+  .section { padding: var(--space-10) 0; }
+  .section-alt { padding: var(--space-10) 0; }
+  .btn-lg {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-sm);
+  }
+}
+
+@media (max-width: 360px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  .container { padding: 0 var(--space-3); }
 }

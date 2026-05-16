@@ -163,14 +163,16 @@
 }
 
 .contactCardContent p,
-.contactCardContent a {
+.contactCardContent a,
+.addressLink {
   font-size: var(--text-sm);
   color: var(--text-muted);
   line-height: 1.7;
   display: block;
 }
 
-.contactCardContent a:hover {
+.contactCardContent a:hover,
+.addressLink:hover {
   color: var(--primary);
 }
 
@@ -325,11 +327,104 @@
   }
 }
 
+@media (max-width: 768px) {
+  .pageHero {
+    padding: calc(var(--nav-height) + var(--strip-height) + var(--space-12)) 0 var(--space-12);
+  }
+  .pageHeroTitle {
+    font-size: var(--text-4xl);
+  }
+  .pageHeroSub {
+    font-size: var(--text-base);
+  }
+  .stepsSection, .contactSection, .faqSection {
+    padding: var(--space-16) 0;
+  }
+  .stepNumber {
+    width: 52px;
+    height: 52px;
+    font-size: var(--text-xl);
+  }
+  .contactCard {
+    padding: var(--space-5);
+  }
+  .formHeader {
+    padding: var(--space-5) var(--space-6);
+  }
+  .formHeader h2 {
+    font-size: var(--text-xl);
+  }
+  .formBody iframe {
+    height: 750px;
+  }
+}
+
 @media (max-width: 480px) {
+  .pageHero {
+    padding: calc(var(--nav-height) + var(--strip-height) + var(--space-8)) 0 var(--space-10);
+  }
   .pageHeroTitle {
     font-size: var(--text-3xl);
   }
+  .pageHeroSub {
+    font-size: var(--text-sm);
+  }
+  .breadcrumbs {
+    font-size: var(--text-xs);
+  }
+  .stepsSection, .contactSection, .faqSection {
+    padding: var(--space-12) 0;
+  }
+  .stepNumber {
+    width: 48px;
+    height: 48px;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-3);
+  }
+  .stepCard h3 {
+    font-size: var(--text-base);
+  }
+  .stepCard p {
+    font-size: var(--text-xs);
+  }
+  .contactCardIcon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+  .contactCard {
+    padding: var(--space-4);
+    gap: var(--space-3);
+  }
+  .contactCardContent h3 {
+    font-size: var(--text-sm);
+  }
+  .mapFull iframe {
+    height: 200px;
+  }
+  .formHeader {
+    padding: var(--space-4) var(--space-5);
+  }
+  .formHeader h2 {
+    font-size: var(--text-lg);
+  }
+  .formHeader p {
+    font-size: var(--text-xs);
+  }
   .formBody iframe {
-    height: 700px;
+    height: 600px;
+  }
+  .faqQuestion {
+    padding: var(--space-4) var(--space-4);
+    font-size: var(--text-sm);
+    gap: var(--space-3);
+  }
+  .faqAnswerContent {
+    padding: 0 var(--space-4) var(--space-4);
+    font-size: var(--text-xs);
+    line-height: 1.7;
+  }
+  .faqArrow {
+    font-size: var(--text-lg);
   }
 }

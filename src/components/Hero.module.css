@@ -313,4 +313,42 @@
   }
 }
 
+@media (max-width: 480px) {
+  .hero {
+    min-height: 100svh;
+  }
 
+  .heroContent {
+    padding: calc(var(--nav-height) + var(--strip-height) + var(--space-6)) var(--space-3) var(--space-8);
+  }
+
+  .heroTitle {
+    font-size: 2.2rem;
+    letter-spacing: -0.01em;
+  }
+
+  .heroSubtitle {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-4);
+  }
+
+  .heroDesc {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+  }
+
+  .heroPrimary, .heroSecondary {
+    max-width: 260px;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-xs);
+    letter-spacing: 0.03em;
+  }
+
+  .heroBadge {
+    font-size: 0.65rem;
+    padding: var(--space-1) var(--space-3);
+    letter-spacing: 0.05em;
+    gap: var(--space-2);
+  }
+}

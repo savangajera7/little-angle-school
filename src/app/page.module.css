@@ -197,9 +197,22 @@
 }
 
 @media (max-width: 768px) {
+  .programs, .features {
+    padding: var(--space-16) 0;
+  }
   .programsGrid {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-4);
+  }
+  .programIcon {
+    height: 120px;
+    font-size: 3rem;
+  }
+  .programBody {
+    padding: var(--space-5);
+  }
+  .programDesc {
+    font-size: var(--text-sm);
   }
   .featuresGrid {
     grid-template-columns: 1fr;
@@ -209,12 +222,67 @@
     gap: var(--space-8);
   }
   .campusContent h2 {
-    font-size: var(--text-4xl);
+    font-size: var(--text-3xl);
+  }
+  .campusDesc {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-6);
+  }
+  .campusFeature {
+    font-size: var(--text-base);
+    gap: var(--space-3);
+  }
+  .campusFeature span {
+    width: 36px;
+    height: 36px;
+    font-size: var(--text-lg);
   }
 }
 
 @media (max-width: 480px) {
+  .programs, .features {
+    padding: var(--space-12) 0;
+  }
   .programsGrid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .programIcon {
+    height: 100px;
+    font-size: 2.5rem;
+  }
+  .programBody {
+    padding: var(--space-4);
+  }
+  .programTitle {
+    font-size: var(--text-lg);
+  }
+  .programAge {
+    font-size: var(--text-xs);
+  }
+  .programDesc {
+    font-size: var(--text-xs);
+    line-height: 1.6;
+  }
+  .campusContent h2 {
+    font-size: var(--text-2xl);
+  }
+  .campusDesc {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+  .campusBadge {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+    bottom: var(--space-3);
+    left: var(--space-3);
+  }
+  .campusFeature {
+    font-size: var(--text-sm);
+  }
+  .campusFeature span {
+    width: 32px;
+    height: 32px;
+    font-size: var(--text-base);
   }
 }

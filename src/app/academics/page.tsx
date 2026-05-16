@@ -9,7 +9,7 @@ import styles from "./academics.module.css";
 export const metadata: Metadata = {
   title: "Academics & Programs",
   description:
-    "Explore academic programs at Little Angel's English School — Jr. KG, Sr. KG, Balvatika, and Primary (Std 1-5). Activity-based learning with Gujarati medium education in Ahmedabad.",
+    "Explore academic programs at Little Angel's English School — Jr. KG, Sr. KG, Balvatika, and Primary (Std 1-8). Activity-based learning with Gujarati medium education in Ahmedabad.",
 };
 
 const programs = [
@@ -39,8 +39,8 @@ const programs = [
   },
   {
     icon: "📖",
-    title: "Primary Section (Std 1–5)",
-    age: "Ages 6–11 Years",
+    title: "Primary Section (Std 1–8)",
+    age: "Ages 6–14 Years",
     bg: styles.programEmojiBg4,
     desc: "Our primary section provides comprehensive education in Gujarati medium with English as a second language. The curriculum balances strong academics with co-curricular activities for holistic development.",
     features: ["Gujarati & English languages", "Mathematics & Science", "Social Studies & EVS", "Computer education", "Sports & co-curricular"],
@@ -97,7 +97,7 @@ export default function AcademicsPage() {
               Our <span className={styles.pageHeroHighlight}>Academics</span>
             </h1>
             <p className={styles.pageHeroSub}>
-              Comprehensive programs designed for holistic child development from Jr. KG to 5th Standard
+              Comprehensive programs designed for holistic child development from Jr. KG to 8th Standard
             </p>
             <div className={styles.breadcrumbs}>
               <Link href="/">Home</Link>

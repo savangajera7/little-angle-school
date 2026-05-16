@@ -75,3 +75,42 @@
   color: var(--text-muted);
   line-height: 1.8;
 }
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .iconWrapper {
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .iconWrapper {
+    width: 56px;
+    height: 56px;
+    font-size: 1.75rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .cardTitle {
+    font-size: var(--text-lg);
+  }
+
+  .cardDesc {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+}

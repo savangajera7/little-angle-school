@@ -318,3 +318,43 @@
   }
 }
 
+@media (max-width: 480px) {
+  .admissionStrip {
+    font-size: 0.65rem;
+    padding: 4px var(--space-2);
+    letter-spacing: 0.02em;
+  }
+
+  .admissionStripInner {
+    gap: var(--space-1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .stripEmoji {
+    font-size: var(--text-xs);
+  }
+
+  .hasStrip {
+    top: var(--strip-height);
+  }
+
+  .mobileLink {
+    font-size: var(--text-2xl);
+    padding: var(--space-3) 0;
+  }
+
+  .mobileCta {
+    font-size: var(--text-lg);
+    padding: var(--space-3) var(--space-8);
+  }
+
+  .logoName {
+    font-size: var(--text-base);
+  }
+
+  .logoSub {
+    font-size: 0.625rem;
+  }
+}

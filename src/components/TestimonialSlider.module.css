@@ -183,18 +183,64 @@
 }
 
 @media (max-width: 768px) {
+  .slider {
+    padding: var(--space-16) 0;
+  }
   .track {
-    min-height: 500px;
+    min-height: 480px;
   }
   .card {
     padding: var(--space-8) var(--space-6);
   }
   .quoteText {
     font-size: var(--text-lg);
+    line-height: 1.7;
+    margin-bottom: var(--space-6);
   }
   .quoteIcon {
     font-size: 10rem;
     top: 0;
     left: 10px;
+  }
+  .dots {
+    margin-top: var(--space-8);
+  }
+}
+
+@media (max-width: 480px) {
+  .slider {
+    padding: var(--space-12) 0;
+  }
+  .track {
+    min-height: 440px;
+  }
+  .card {
+    padding: var(--space-6) var(--space-4);
+    border-radius: var(--radius-xl);
+  }
+  .quoteText {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+  }
+  .stars {
+    margin-bottom: var(--space-4);
+    font-size: 1rem;
+  }
+  .quoteIcon {
+    font-size: 7rem;
+    top: -5px;
+    left: 5px;
+  }
+  .authorAvatar {
+    width: 48px;
+    height: 48px;
+    font-size: var(--text-base);
+  }
+  .authorName {
+    font-size: var(--text-base);
+  }
+  .dots {
+    margin-top: var(--space-6);
   }
 }

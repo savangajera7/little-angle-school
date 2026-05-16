@@ -144,6 +144,13 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--duration-fast);
+}
+
+.contactText:hover {
+  color: var(--accent);
 }
 
 .contactText a {
@@ -242,5 +249,63 @@
     flex-direction: column;
     gap: var(--space-4);
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--space-10) 0 0;
+  }
+
+  .footerGrid {
+    gap: var(--space-8);
+    padding: var(--space-4) 0;
+  }
+
+  .footerSchoolName {
+    font-size: var(--text-lg);
+  }
+
+  .footerDesc {
+    font-size: var(--text-xs);
+    line-height: 1.7;
+  }
+
+  .footerColumn h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+  }
+
+  .footerLink {
+    font-size: var(--text-xs);
+  }
+
+  .contactItem {
+    font-size: var(--text-xs);
+    margin-bottom: var(--space-3);
+  }
+
+  .mapContainer {
+    height: 140px;
+  }
+
+  .trustBadge {
+    font-size: 0.625rem;
+  }
+
+  .footerLogoImg {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .copyright {
+    font-size: var(--text-xs);
+  }
+
+  .backToTop {
+    width: 38px;
+    height: 38px;
+    font-size: var(--text-lg);
   }
 }

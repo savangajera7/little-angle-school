@@ -9,7 +9,7 @@ import styles from "./contact.module.css";
 const faqs = [
   {
     q: "What classes/grades are available at Little Angel's?",
-    a: "We offer Jr. KG, Sr. KG, Balvatika, and Primary Section (Std 1 to 5). Our school caters to children aged 3 to 11 years.",
+    a: "We offer Jr. KG, Sr. KG, Balvatika, and Primary Section (Std 1 to 8). Our school caters to children aged 3 to 14 years.",
   },
   {
     q: "What is the medium of instruction?",
@@ -114,11 +114,16 @@ export default function ContactPage() {
                   <div className={styles.contactCardIcon}>📍</div>
                   <div className={styles.contactCardContent}>
                     <h3>Our Address</h3>
-                    <p>
+                    <a 
+                      href="https://maps.app.goo.gl/mTGj4dMCMCYoDyNR8" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={styles.addressLink}
+                    >
                       Opp. Anant Sky, Nr. Maruti Residency-3,
                       <br />
                       Vadvali Chali, Singarva, Ahmedabad
-                    </p>
+                    </a>
                   </div>
                 </div>
               </ScrollReveal>
@@ -149,7 +154,7 @@ export default function ContactPage() {
               <ScrollReveal direction="left" delay={0.3}>
                 <div className={styles.mapFull}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.3!2d72.63!3d23.01!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAwJzM2LjAiTiA3MsKwMzcnNDguMCJF!5e0!3m2!1sen!2sin!4v1"
+                    src="https://maps.google.com/maps?q=23.0214698,72.6957018&t=&z=17&ie=UTF8&iwloc=&output=embed"
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"

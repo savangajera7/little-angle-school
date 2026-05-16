@@ -32,8 +32,8 @@ const programs = [
   },
   {
     icon: "📖",
-    title: "Primary (1-5)",
-    age: "Ages 6–11",
+    title: "Primary (1-8)",
+    age: "Ages 6–14",
     desc: "Comprehensive education with strong academics, values, and co-curricular activities.",
     bg: styles.programIconBg4,
   },
@@ -118,7 +118,7 @@ export default function Home() {
             label="Our Programs"
             title="Academic"
             highlight="Programs"
-            subtitle="From Jr. KG to 5th Standard, we offer age-appropriate programs designed for holistic development"
+            subtitle="From Jr. KG to 8th Standard, we offer age-appropriate programs designed for holistic development"
           />
           <div className={styles.programsGrid}>
             {programs.map((p, i) => (

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Little Angel's English School",
   },
   description:
-    "Little Angel's English School (સાંઈ વિદ્યા મંદિર) offers quality education from Jr. KG to 5th Standard in Singarva, Ahmedabad. Managed by Naagneshwari Education Trust. Admissions Open 2026-27.",
+    "Little Angel's English School (સાંઈ વિદ્યા મંદિર) offers quality education from Jr. KG to 8th Standard in Singarva, Ahmedabad. Managed by Naagneshwari Education Trust. Admissions Open 2026-27.",
   keywords: [
     "Little Angels English School",
     "school in Singarva",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Little Angel's English School",
     title: "Little Angel's English School | Best School in Singarva, Ahmedabad",
     description:
-      "Quality education from Jr. KG to 5th Standard. New campus now open! Admissions Open 2026-27.",
+      "Quality education from Jr. KG to 8th Standard. New campus now open! Admissions Open 2026-27.",
     images: [
       {
         url: "/images/school-building.jpeg",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Little Angel's English School | Ahmedabad",
     description:
-      "Quality education from Jr. KG to 5th Standard. Admissions Open 2026-27.",
+      "Quality education from Jr. KG to 8th Standard. Admissions Open 2026-27.",
     images: ["/images/school-building.jpeg"],
   },
   robots: {
@@ -76,7 +76,7 @@ const jsonLd = {
   logo: "https://little-angle.mahispark.com/images/logo.png",
   image: "https://little-angle.mahispark.com/images/school-building.jpeg",
   description:
-    "Little Angel's English School offers quality education from Jr. KG to 5th Standard in Singarva, Ahmedabad.",
+    "Little Angel's English School offers quality education from Jr. KG to 8th Standard in Singarva, Ahmedabad.",
   address: {
     "@type": "PostalAddress",
     streetAddress:

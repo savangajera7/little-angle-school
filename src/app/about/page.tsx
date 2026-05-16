@@ -71,7 +71,7 @@ export default function AboutPage() {
                   Located in the heart of Singarva, Ahmedabad, our school has grown
                   from a small institution into a thriving learning community. Our brand
                   new campus, inaugurated in 2026, features modern facilities designed
-                  specifically for young learners from Jr. KG to 5th Standard.
+                  specifically for young learners from Jr. KG to 8th Standard.
                 </p>
                 <p>
                   We believe that the early years of education are the most critical in
