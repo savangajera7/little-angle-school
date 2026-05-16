@@ -93,7 +93,7 @@ export default function Footer() {
             </div>
             <div className={styles.mapContainer}>
               <iframe
-                src="https://maps.google.com/maps?q=23.0214698,72.6957018&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d229.50395277712045!2d72.69570014786272!3d23.021449960093722!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e87df694d97f5%3A0xf37d5c296060b675!2sAnant%20Sky!5e0!3m2!1sen!2sus!4v1778926271488!5m2!1sen!2sus"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
