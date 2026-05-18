@@ -45,6 +45,7 @@
 .logoText {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .logoName {
