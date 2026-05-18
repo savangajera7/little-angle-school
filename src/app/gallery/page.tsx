@@ -5,21 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import styles from "./gallery.module.css";
+import galleryItemsData from "@/data/gallery.json";
 
-const galleryItems = [
-  { src: "/images/school-building.jpeg", label: "School Main Building", category: "Campus" },
-  { src: "/images/school-building.jpeg", label: "School Entrance Gate", category: "Campus" },
-  { src: "/images/school-building.jpeg", label: "Campus Front View", category: "Campus" },
-  { src: "/images/school-building.jpeg", label: "Bright Classrooms", category: "Classrooms" },
-  { src: "/images/school-building.jpeg", label: "Learning in Action", category: "Classrooms" },
-  { src: "/images/school-building.jpeg", label: "Smart Classroom Setup", category: "Classrooms" },
-  { src: "/images/school-building.jpeg", label: "Annual Day Celebration", category: "Events" },
-  { src: "/images/school-building.jpeg", label: "Independence Day", category: "Events" },
-  { src: "/images/school-building.jpeg", label: "Sports Day Fun", category: "Activities" },
-  { src: "/images/school-building.jpeg", label: "Art & Craft Session", category: "Activities" },
-  { src: "/images/school-building.jpeg", label: "Music Class", category: "Activities" },
-  { src: "/images/school-building.jpeg", label: "Outdoor Play Area", category: "Campus" },
-];
+interface GalleryItem {
+  src: string;
+  label: string;
+  category: string;
+}
+
+const galleryItems = galleryItemsData as GalleryItem[];
 
 const categories = ["All", "Campus", "Classrooms", "Events", "Activities"];
 
@@ -84,6 +78,7 @@ export default function GalleryPage() {
                     alt={item.label}
                     width={400}
                     height={300}
+                    loading="lazy"
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
                   <div className={styles.galleryOverlay}>
