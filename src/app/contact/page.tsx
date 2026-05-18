@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
+import AdmissionForm from "@/components/AdmissionForm";
 import styles from "./contact.module.css";
 
 const faqs = [
@@ -164,28 +165,10 @@ export default function ContactPage() {
               </ScrollReveal>
             </div>
 
-            {/* Right - Google Form */}
+            {/* Right - Premium Admission Form */}
             <ScrollReveal direction="right">
               <div className={styles.formSection}>
-                <div className={styles.formHeader}>
-                  <h2>📝 Admission Application Form</h2>
-                  <p>Fill out the form below to apply for admission at Little Angel&apos;s</p>
-                </div>
-                <div className={styles.formBody}>
-                  {/* Replace the URL below with your actual Google Form embed URL */}
-                  <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSfz8csK6cMfM2W-Vt7kIdCsmTKwWxK616eUYdAeLEpCPDlo7g/viewform?embedded=true"
-                    title="Admission Application Form"
-                    width="100%"
-                    height="2800"
-                    frameBorder="0"
-                    marginHeight={0}
-                    marginWidth={0}
-                    loading="lazy"
-                  >
-                    Loading…
-                  </iframe>
-                </div>
+                <AdmissionForm inline={true} />
               </div>
             </ScrollReveal>
           </div>

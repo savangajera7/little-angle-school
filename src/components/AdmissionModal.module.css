@@ -512,3 +512,10 @@
   }
 }
 
+.inlineInner {
+  overflow-y: visible !important;
+  max-height: none !important;
+  flex: none !important;
+  padding: var(--space-6) !important;
+}
+
