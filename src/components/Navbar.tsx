@@ -59,8 +59,8 @@ export default function Navbar() {
             <Image
               src="/images/logo.png"
               alt="Little Angel's English School Logo"
-              width={54}
-              height={54}
+              width={64}
+              height={64}
               className={styles.logoImage}
               priority
             />

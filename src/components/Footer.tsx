@@ -22,8 +22,8 @@ export default function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="Little Angel's English School"
-                width={56}
-                height={56}
+                width={64}
+                height={64}
                 className={styles.footerLogoImg}
               />
               <div className={styles.footerLogoText}>
