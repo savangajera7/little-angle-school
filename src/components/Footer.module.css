@@ -40,6 +40,7 @@
 
 .footerLogoImg {
   border-radius: var(--radius-full);
+  clip-path: circle(41.5% at 50% 50%);
 }
 
 .footerLogoText {
