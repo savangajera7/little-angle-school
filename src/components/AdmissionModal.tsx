@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./AdmissionModal.module.css";
 
 export default function AdmissionModal() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,13 +40,11 @@ export default function AdmissionModal() {
   }, [isOpen]);
 
   useEffect(() => {
-    // const hasSeenPopup = localStorage.getItem("hasSeenAdmissionPopup");
-    // Temporarily disabled localStorage check for testing purposes
-    const hasSeenPopup = false; 
+    const hasSeenPopup = localStorage.getItem("hasSeenAdmissionPopup") === "true";
     
     let timer: NodeJS.Timeout;
-    if (!hasSeenPopup) {
-      timer = setTimeout(() => setIsOpen(true), 2000); // Pops up after 2 seconds for easy testing
+    if (!hasSeenPopup && pathname === "/") {
+      timer = setTimeout(() => setIsOpen(true), 8000); // Pops up after 8 seconds on homepage only
     }
 
     const handleManualOpen = () => setIsOpen(true);
@@ -54,7 +54,7 @@ export default function AdmissionModal() {
       if (timer) clearTimeout(timer);
       window.removeEventListener("openAdmissionModal", handleManualOpen);
     };
-  }, []);
+  }, [pathname]);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -84,6 +84,7 @@ export default function AdmissionModal() {
         body: JSON.stringify(formData),
       });
       setIsSuccess(true);
+      localStorage.setItem("hasSeenAdmissionPopup", "true");
       setTimeout(() => handleClose(), 5000);
     } catch (error) {
       alert("Something went wrong. Please try again.");
