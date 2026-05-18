@@ -1,0 +1,67 @@
+[
+  {
+    "src": "/images/file_0000000012a872088edd2f005f8621f4.png",
+    "label": "Little Angels School Main Entrance",
+    "category": "Campus"
+  },
+  {
+    "src": "/images/WhatsApp Image 2026-05-18 at 11.18.49.JPG.jpeg",
+    "label": "Modern Campus Reception & Corridor",
+    "category": "Campus"
+  },
+  {
+    "src": "/images/DSC09403.JPG.jpeg",
+    "label": "Bright Learning Corridor",
+    "category": "Campus"
+  },
+  {
+    "src": "/images/DSC09445.JPG.jpeg",
+    "label": "Spacious School Assembly Hall",
+    "category": "Campus"
+  },
+  {
+    "src": "/images/IMG_0475.JPG.jpeg",
+    "label": "Interactive Classroom Session",
+    "category": "Classrooms"
+  },
+  {
+    "src": "/images/IMG20230213172326.jpg.jpeg",
+    "label": "Engaging Science Laboratory Experiments",
+    "category": "Activities"
+  },
+  {
+    "src": "/images/IMG20230213173033.jpg.jpeg",
+    "label": "Creative Arts, Crafts & Drawing Session",
+    "category": "Activities"
+  },
+  {
+    "src": "/images/WhatsApp Image 2026-03-14 at 11.32.15 AM.jpeg",
+    "label": "Students Morning Assembly and Prayers",
+    "category": "Activities"
+  },
+  {
+    "src": "/images/WhatsApp Image 2026-05-18 at 5.11.50 PM.jpeg",
+    "label": "Fun Recreational Playground Games",
+    "category": "Activities"
+  },
+  {
+    "src": "/images/IMG20250111092714.jpg.jpeg",
+    "label": "Republic Day & Flag Hoisting Ceremony",
+    "category": "Events"
+  },
+  {
+    "src": "/images/Screenshot_20221203_113435.jpg.jpeg",
+    "label": "Annual Day Celebrations & Speeches",
+    "category": "Events"
+  },
+  {
+    "src": "/images/VIK_6197.JPG.jpeg",
+    "label": "Sports Day Grand Prize Distribution",
+    "category": "Events"
+  },
+  {
+    "src": "/images/VIK_6292.JPG.jpeg",
+    "label": "Colorful Student Dance Performance",
+    "category": "Events"
+  }
+]
