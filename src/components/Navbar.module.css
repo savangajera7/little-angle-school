@@ -39,7 +39,6 @@
 .logoImage {
   border-radius: var(--radius-full);
   object-fit: contain;
-  clip-path: circle(44% at 48% 50%);
 }
 
 .logoText {
